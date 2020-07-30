@@ -14,6 +14,7 @@ import (
 func main() {
 	db, _ := utils.DbConnection()
 	db.AutoMigrate(&entity.User{})
+	defer utils.DbCloseConnection(db)
 	myRouter := mux.NewRouter().StrictSlash(true)
 	port := os.Getenv("port")
 	if port == "" {

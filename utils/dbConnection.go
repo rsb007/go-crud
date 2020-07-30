@@ -18,4 +18,5 @@ func DbConnection() (*gorm.DB, error) {
 
 func DbCloseConnection(db *gorm.DB) {
 	_ = db.Close()
+	log.Println("Connection Closed")
 }

@@ -18,7 +18,7 @@ func SaveUser(user entity.User) (entity.User, error) {
 		return user, errors.New(fmt.Sprintf("User with email %s already exist", user.Email))
 	}
 	db.Create(&user)
-	utils.DbCloseConnection(db)
+	defer utils.DbCloseConnection(db)
 	return user, nil
 }
 
@@ -32,7 +32,7 @@ func GetUserById(id string) entity.User {
 	db, _ := utils.DbConnection()
 	var user entity.User
 	db.Model(user).Where("id = ?", id).Find(&user)
-	utils.DbCloseConnection(db)
+	defer utils.DbCloseConnection(db)
 	return user
 }
 
@@ -40,7 +40,7 @@ func GetAllUsers() []entity.User {
 	db, _ := utils.DbConnection()
 	var users []entity.User
 	db.Find(&users)
-	utils.DbCloseConnection(db)
+	defer utils.DbCloseConnection(db)
 	return users
 }
 
@@ -53,7 +53,7 @@ func UpdateUser(user *entity.User) (entity.User, error) {
 	user.ModifiedAt = time.Now()
 	db.Model(&checkUser).Where("email = ? and id = ?", user.Email, user.Id).Update(user)
 	db.Save(&user)
-	utils.DbCloseConnection(db)
+	defer utils.DbCloseConnection(db)
 	return *user, nil
 }
 
@@ -64,6 +64,6 @@ func DeleteUser(id string) error {
 		return errors.New(fmt.Sprintf("user with id =%s not exits", id))
 	}
 	db.Where("id = ?", id).Delete(&entity.User{})
-	utils.DbCloseConnection(db)
+	defer utils.DbCloseConnection(db)
 	return nil
 }
