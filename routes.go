@@ -1,8 +1,8 @@
 package main
 
 import (
-	"awesomeProject/api"
 	"github.com/gorilla/mux"
+	"go-crud/api"
 )
 
 const (

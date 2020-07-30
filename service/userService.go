@@ -1,11 +1,11 @@
 package service
 
 import (
-	"awesomeProject/entity"
-	"awesomeProject/utils"
 	"errors"
 	"fmt"
 	"github.com/jinzhu/gorm"
+	"go-crud/entity"
+	"go-crud/utils"
 	"time"
 )
 

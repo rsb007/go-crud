@@ -1,12 +1,12 @@
 package api
 
 import (
-	"awesomeProject/entity"
-	"awesomeProject/service"
 	"encoding/json"
 	"errors"
 	"fmt"
 	"github.com/gorilla/mux"
+	"go-crud/entity"
+	"go-crud/service"
 	"io/ioutil"
 	"net/http"
 )

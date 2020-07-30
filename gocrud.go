@@ -1,11 +1,11 @@
 package main
 
 import (
-	"awesomeProject/entity"
-	"awesomeProject/utils"
 	"fmt"
 	"github.com/gorilla/mux"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"go-crud/entity"
+	"go-crud/utils"
 	"log"
 	"net/http"
 	"os"
